@@ -6,6 +6,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { RouterModule } from "@angular/router";
 import { StoreModule } from "@ngrx/store";
+import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { LoginComponent } from "./login/login.component";
 import * as fromAuth from "./reducers";
@@ -28,7 +29,7 @@ export class AuthModule {
   static forRoot(): ModuleWithProviders<AuthModule> {
     return {
       ngModule: AuthModule,
-      providers: [AuthService],
+      providers: [AuthService, AuthGuard],
     };
   }
 }
