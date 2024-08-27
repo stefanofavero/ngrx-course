@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { noop } from "rxjs";
 import { tap } from "rxjs/operators";
+import { AuthActions } from "../action-types";
 import { AppState } from "./../../reducers";
-import { login } from "./../auth.actions";
 import { AuthService } from "./../auth.service";
 import { User } from "./../model/user.model";
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         tap((user: User) => {
           console.log(user);
 
-          this.store.dispatch(login({ user }));
+          this.store.dispatch(AuthActions.login({ user }));
 
           this.router.navigateByUrl("/courses");
         })
