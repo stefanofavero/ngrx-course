@@ -5,7 +5,9 @@ import { Store } from "@ngrx/store";
 import { noop } from "rxjs";
 import { tap } from "rxjs/operators";
 import { AppState } from "./../../reducers";
+import { login } from "./../auth.actions";
 import { AuthService } from "./../auth.service";
+import { User } from "./../model/user.model";
 
 @Component({
   selector: "login",
@@ -35,10 +37,10 @@ export class LoginComponent implements OnInit {
     this.auth
       .login(val.email, val.password)
       .pipe(
-        tap((user) => {
+        tap((user: User) => {
           console.log(user);
 
-          // this.store.dispatch();
+          this.store.dispatch(login({ user }));
 
           this.router.navigateByUrl("/courses");
         })
