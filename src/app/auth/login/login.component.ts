@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { noop } from "rxjs";
 import { tap } from "rxjs/operators";
+import { login } from "../auth.actions";
 import { AppState } from "./../../reducers";
-import { login } from "./../auth.actions";
 import { AuthService } from "./../auth.service";
 import { User } from "./../model/user.model";
 
