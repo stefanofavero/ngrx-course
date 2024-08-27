@@ -11,15 +11,14 @@ import {
   withInterceptorsFromDi,
 } from "@angular/common/http";
 import { MatListModule } from "@angular/material/list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
-
 import { RouterModule, Routes } from "@angular/router";
 import { StoreModule } from "@ngrx/store";
-import { AuthModule } from "./auth/auth.module";
-
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { AuthModule } from "./auth/auth.module";
+import { metaReducers, reducers } from "./reducers";
 
 const routes: Routes = [
   {
@@ -47,7 +46,7 @@ const routes: Routes = [
     MatListModule,
     MatToolbarModule,
     AuthModule.forRoot(),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
