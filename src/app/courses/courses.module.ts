@@ -49,7 +49,11 @@ export const coursesRoutes: Routes = [
 ];
 
 const entityMetadata: EntityMetadataMap = {
-  Course: { sortComparer: compareCourses, selectId: (course) => course.id },
+  Course: {
+    sortComparer: compareCourses,
+    selectId: (course) => course.id,
+    entityDispatcherOptions: { optimisticUpdate: true },
+  },
 };
 
 @NgModule({
