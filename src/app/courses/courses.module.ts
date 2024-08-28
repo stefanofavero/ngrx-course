@@ -23,15 +23,22 @@ import { EditCourseDialogComponent } from "./edit-course-dialog/edit-course-dial
 import { HomeComponent } from "./home/home.component";
 import { CourseEntityService } from "./services/course-entity.service";
 import { CoursesHttpService } from "./services/courses-http.service";
+import { CoursesResolver } from "./services/courses.resolver";
 
 export const coursesRoutes: Routes = [
   {
     path: "",
     component: HomeComponent,
+    resolve: {
+      courses: CoursesResolver,
+    },
   },
   {
     path: ":courseUrl",
     component: CourseComponent,
+    resolve: {
+      courses: CoursesResolver,
+    },
   },
 ];
 
@@ -71,7 +78,7 @@ const entityMetadata: EntityMetadataMap = {
     EditCourseDialogComponent,
     CourseComponent,
   ],
-  providers: [CoursesHttpService, CourseEntityService],
+  providers: [CoursesHttpService, CourseEntityService, CoursesResolver],
 })
 export class CoursesModule {
   constructor(private eds: EntityDefinitionService) {
