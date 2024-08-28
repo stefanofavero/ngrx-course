@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Update } from "@ngrx/entity";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { courseUpdated } from "./../course.actions";
+import { courseUpdated } from "../courses.actions";
 import { Course } from "./../model/course";
 
 @Component({

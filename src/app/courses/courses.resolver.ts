@@ -8,7 +8,7 @@ import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { filter, finalize, first, tap } from "rxjs/operators";
 import { AppState } from "./../reducers/index";
-import { loadAllCourses } from "./course.actions";
+import { loadAllCourses } from "./courses.actions";
 import { areCoursesLoaded } from "./courses.selectors";
 
 @Injectable()
